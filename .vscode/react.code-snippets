@@ -1,0 +1,55 @@
+{
+  "React Functional Component Arrow": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:ComponentName} = () => {",
+      "  return (",
+      "    <div>",
+      "      ${2:/* Component content */}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Creates a React functional component with arrow function syntax"
+  },
+  "React Functional Component Arrow with Props": {
+    "prefix": "rfcp",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:ComponentName} = ({ ${2:props} }) => {",
+      "  return (",
+      "    <div>",
+      "      ${3:/* Component content */}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Creates a React functional component with arrow function syntax and props"
+  },
+  "React Functional Component Arrow with Hooks": {
+    "prefix": "rfch",
+    "body": [
+      "import React, { useState } from 'react';",
+      "",
+      "const ${1:ComponentName} = () => {",
+      "  const [${2:state}, set${2/(.)/\\U$1/}] = useState(${3:initialValue});",
+      "",
+      "  return (",
+      "    <div>",
+      "      ${4:/* Component content */}",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Creates a React functional component with arrow function syntax and useState hook"
+  }
+}
