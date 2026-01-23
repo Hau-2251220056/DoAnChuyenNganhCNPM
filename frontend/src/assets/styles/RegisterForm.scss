@@ -3,19 +3,19 @@
     justify-content: center;
     background-color: #fff;
 
-    .form-content{
+    .login-content{
         display: flex;
         border: 2px solid var(--primary-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 20px;
         overflow: hidden;
-        .form-banner{
+        .login-banner{
             width: 70%;
             height: auto;
             border-radius: 20px;
             border-right: 2px solid var(--primary-color);
         }
-        .form{
+        .login-form{
             padding: 40px;
             display: flex;
             align-items: center;
