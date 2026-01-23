@@ -4,11 +4,12 @@ import Login from "./components/Form/LoginForm";
 import Register from "./components/Form/RegisterForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './assets/styles/base.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <BrowserRouter>
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

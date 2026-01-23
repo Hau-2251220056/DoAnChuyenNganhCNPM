@@ -3,25 +3,28 @@
     justify-content: center;
     background-color: #fff;
 
-    .login-content{
+    .form-content{
         display: flex;
         border: 2px solid var(--primary-color);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 20px;
         overflow: hidden;
-        .login-banner{
+        align-items: center;
+        max-height: 470px;
+        .form-banner{
             width: 70%;
             height: auto;
             border-radius: 20px;
             border-right: 2px solid var(--primary-color);
+            
         }
-        .login-form{
-            padding: 40px;
+        .form{
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-
+            flex: 1;
             .form-controller{
                 display: flex;
                 flex-direction: column;

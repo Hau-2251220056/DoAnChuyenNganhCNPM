@@ -14,8 +14,8 @@ const LoginForm = () => {
                     <form action="" className="form-controller">
                         <h2 className="form-title">Đăng Nhập</h2>
                         <div className="form-group">
-                            <label htmlFor="username" className="form-label">Tên đăng nhập</label>
-                            <input type="text" id="username" className="form-input" placeholder="Nhập tên đăng nhập" />
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="email" id="email" className="form-input" placeholder="Nhập email" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="password" className="form-label">Mật khẩu</label>
