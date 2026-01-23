@@ -1,10 +1,12 @@
 import Header from "./components/Header";
-import "./assets/styles/Header.scss";
+
 import "./assets/styles/base.scss";
+import Home from "./pages/Home";
 function App() {
   return (
     <>
       <Header />
+      <Home />
     </>
   );
 }
