@@ -21,7 +21,7 @@ const Header = () => {
           </div>
           <div className="header-nav">
             <ul className="nav-list">
-              <li className="nav-item">Trang chủ</li>
+              <Link to="/"><li className="nav-item">Trang chủ</li></Link>
               <li className="nav-item">Tour</li>
               <li className="nav-item">Liên hệ</li>
               <li className="nav-item">Giới thiệu</li>

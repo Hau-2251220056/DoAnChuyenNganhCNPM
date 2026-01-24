@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
 
 *{
     padding: 0;
@@ -21,7 +19,10 @@ html {
     --background-color: #f5f5f5;
     --text-color: #666;
     --button-color: #1976d2;
+    --white-color: #fff;
+    --black-color: #000;
 }
+
 .max-width{
     width: 1200px;
 }
@@ -32,10 +33,80 @@ html {
     padding: 60px 0;
 }
 a{
-    text-decoration: none;
+    text-decoration: none !important
 }
 .center{
     display: flex;
     justify-content: center;
-    
+}
+
+/* ====================== */
+/* GRID SYSTEM CUSTOM     */
+/* ====================== */
+$gutter: 16px;
+$columns: 12;
+
+/* ROW */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$gutter / 2};
+  margin-right: -#{$gutter / 2};
+}
+
+/* COLUMN */
+.col {
+  padding-left: #{$gutter / 2};
+  padding-right: #{$gutter / 2};
+  flex: 1;
+}
+
+/* Cột theo số lượng */
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / $columns);
+    max-width: percentage($i / $columns);
+  }
+}
+
+/* Responsive: sm (<768px), md (≥768px), lg (≥992px), xl (≥1200px) */
+@media (max-width: 767.98px) {
+  @for $i from 1 through $columns {
+    .col-sm-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  @for $i from 1 through $columns {
+    .col-md-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  @for $i from 1 through $columns {
+    .col-lg-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  @for $i from 1 through $columns {
+    .col-xl-#{$i} {
+      flex: 0 0 percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+  }
+}
+
+/* Khoảng cách giữa các hàng */
+.row-gap {
+  margin-top: $gutter;
 }

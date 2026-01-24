@@ -3,8 +3,8 @@ import Home from "./pages/Home";
 import Login from "./components/Form/LoginForm";
 import Register from "./components/Form/RegisterForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './assets/styles/FormStyle.scss';
 import './assets/styles/base.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

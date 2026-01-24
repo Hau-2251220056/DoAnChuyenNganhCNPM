@@ -1,8 +1,6 @@
  // bỏ {}
 import { Link } from 'react-router-dom';
 import Banner from '../../assets/images/banner-form.jpg';
-import '../../assets/styles/RegisterForm.scss';
-
 
 
 const RegisterForm = () => {
