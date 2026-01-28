@@ -2,14 +2,23 @@
 import logo from '../assets/images/logo.png';
 import { CiSearch } from "react-icons/ci";
 import "../assets/styles/Header.scss";
-import { Link } from 'react-router-dom';
-const Header = () => {
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { useState } from 'react';
 
+const Header = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+    setShowDropdown(false);
+  };
 
   return (
     <>
-      
-      
       <div className="header">
         <div className="header-content">
           <div className="header-logo">
@@ -28,12 +37,75 @@ const Header = () => {
             </ul>
           </div>
           <div className="header-btn">
-            <Link to="/login" className="btn-login">Đăng Nhập</Link>
-            <Link to="/register" className="btn-signup">Đăng Ký</Link>
+            {isAuthenticated && user ? (
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div 
+                  style={{
+                    cursor: 'pointer',
+                    padding: '8px 12px',
+                    backgroundColor: '#007bff',
+                    color: 'white',
+                    borderRadius: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                  }}
+                  onMouseEnter={() => setShowDropdown(true)}
+                  onMouseLeave={() => setShowDropdown(false)}
+                >
+                  👤 {user.ho_ten || user.email}
+                  <span style={{ fontSize: '12px' }}>▼</span>
+                </div>
+                
+                {showDropdown && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '100%',
+                      right: 0,
+                      backgroundColor: 'white',
+                      border: '1px solid #ddd',
+                      borderRadius: '4px',
+                      minWidth: '150px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                      zIndex: 1000,
+                      marginTop: '5px',
+                    }}
+                    onMouseEnter={() => setShowDropdown(true)}
+                    onMouseLeave={() => setShowDropdown(false)}
+                  >
+                    <div style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+                      <p style={{ margin: 0, fontSize: '12px', color: '#666' }}>
+                        Role: {user.vai_tro === 'admin' ? '👑 Admin' : '👤 Khách hàng'}
+                      </p>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      style={{
+                        width: '100%',
+                        padding: '10px',
+                        border: 'none',
+                        backgroundColor: 'transparent',
+                        cursor: 'pointer',
+                        color: '#d32f2f',
+                        textAlign: 'left',
+                        fontSize: '14px',
+                      }}
+                    >
+                      🚪 Đăng xuất
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className="btn-login">Đăng Nhập</Link>
+                <Link to="/register" className="btn-signup">Đăng Ký</Link>
+              </>
+            )}
           </div>
         </div>
       </div>
-      
     </>
   );
 };

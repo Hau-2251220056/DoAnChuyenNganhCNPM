@@ -1,69 +1,352 @@
-.home-main{
-    margin-top: 95px;
-   
-    background-color: #fff;
-    
-    .home-banner{
-        width: 100%;
+/* ============ BANNER SECTION ============ */
+.home-banner-section {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  margin-bottom: 60px;
 
-
-        img{
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-        }
-        .banner-content{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--text-color);
-            text-align: center;
-            .banner-title{
-                font-size: 48px;
-                font-weight: bold;
-                margin-bottom: 20px;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            }
-            .sub-title{
-                font-size: 20px;
-                margin-bottom: 30px;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-            }
-        }
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
 }
-.home-content{
-   .title-box{
-        margin-bottom: 40px;
-        .box-title{
-            font-size: 26px;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-    }
-    .content-box{
-        height: 230px;
-        background-color: var(--white-color);
-        padding: 20px;
 
-        .content-icon{
-            font-size: 36px;
-            color: var(--secondary-color);
-            margin-bottom: 16px;
-        }
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 100%;
+  z-index: 10;
 
-        .box-text{
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--secondary-color);
-            // line-height: 1.5px;
-        }
-        .decs{
-            font-size: 16px;
-            color: var(--black-color);
-            line-height: 1.4;
-        }
+  h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+  }
+
+  p {
+    font-size: 20px;
+    margin: 0 0 30px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+
+  button {
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:first-child {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: #ff5252;
+      }
     }
+
+    &:last-child {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+
+      &:hover {
+        background-color: white;
+        color: #333;
+      }
+    }
+  }
+}
+
+/* ============ WHY CHOOSE SECTION ============ */
+.why-choose-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #333;
+  }
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-choose-card {
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 18px;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+/* ============ FEATURED TOURS SECTION ============ */
+.featured-tours-section {
+  padding: 60px 20px;
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #333;
+  }
+}
+
+.featured-tours-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============ TESTIMONIALS SECTION ============ */
+.testimonials-section {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #333;
+  }
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #ff6b6b;
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+
+  .avatar {
+    font-size: 40px;
+  }
+
+  .testimonial-info {
+    h4 {
+      margin: 0 0 5px 0;
+      color: #333;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+
+      span {
+        color: #ffc107;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.testimonial-text {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ============ NEWSLETTER SECTION ============ */
+.newsletter-section {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0 0 30px 0;
+  }
+}
+
+.newsletter-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+
+  input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  button {
+    padding: 12px 30px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #ff5252;
+    }
+  }
+}
+
+/* ============ CTA SECTION ============ */
+.cta-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  button {
+    padding: 15px 40px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #ff5252;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .home-banner-section {
+    height: 400px;
+  }
+
+  .banner-overlay {
+    h1 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .banner-buttons {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .why-choose-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
