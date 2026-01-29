@@ -2,6 +2,7 @@ import banner from '../assets/images/banner.jpg';
 import '../assets/styles/base.scss';
 import '../assets/styles/Home.scss';
 import TourList from '../components/TourList';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const testimonials = [
@@ -37,7 +38,7 @@ const Home = () => {
           <h1>✈️ KHÁM PHÁ VIỆT NAM CỦA BẠN</h1>
           <p>Những chuyến du lịch tuyệt vời, những kỷ niệm không bao giờ quên</p>
           <div className="banner-buttons">
-            <button>Khám Phá Tours</button>
+            <button><Link to="/tours">Khám Phá Tours</Link></button>
             <button>Liên Hệ</button>
           </div>
         </div>
@@ -71,7 +72,7 @@ const Home = () => {
             <p>Đội ngũ chuyên nghiệp luôn sẵn sàng hỗ trợ bạn bất kỳ lúc nào</p>
           </div>
 
-          <div className="why-choose-card">
+          {/* <div className="why-choose-card">
             <div className="icon">⭐</div>
             <h3>Đánh Giá Cao</h3>
             <p>Hàng ngàn khách hàng hài lòng và tin tưởng chúng tôi</p>
@@ -81,7 +82,7 @@ const Home = () => {
             <div className="icon">🚀</div>
             <h3>Trải Nghiệm Tuyệt Vời</h3>
             <p>Mỗi tour đều được thiết kế để mang lại kỷ niệm đẹp nhất</p>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -132,7 +133,7 @@ const Home = () => {
       <div className="cta-section">
         <div className="cta-container">
           <h2>🚀 Sẵn Sàng Bắt Đầu Cuộc Phiêu Lưu?</h2>
-          <button>Khám Phá Tours Ngay →</button>
+          <button><Link to="/tours">Khám Phá Tours Ngay →</Link></button>
         </div>
       </div>
     </>

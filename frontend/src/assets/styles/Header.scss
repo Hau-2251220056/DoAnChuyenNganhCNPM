@@ -184,7 +184,7 @@
     .btn-login {
       background-color: transparent;
       color: #1976d2;
-      border: 1.5px solid #1976d2;
+      border: 1.5px solid var(--button-color);
 
       &:hover {
         background-color: #f0f7ff;
@@ -192,7 +192,7 @@
     }
 
     .btn-signup {
-      background-color: #1976d2;
+      background: var(--btn-color);
       color: #ffffff;
 
       &:hover {

@@ -31,10 +31,9 @@ const Footer = () => {
             <h4 className="footer-title">🔗 Liên Kết Nhanh</h4>
             <ul className="footer-links">
               <li><Link to="/">Trang Chủ</Link></li>
-              <li><a href="#tours">Tours</a></li>
-              <li><a href="#about">Về Chúng Tôi</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#contact">Liên Hệ</a></li>
+              <li><Link to="/tours">Tours</Link></li>
+              <li><Link to="/about">Về Chúng Tôi</Link></li>
+              <li><Link to="/contact">Liên Hệ</Link></li>
             </ul>
           </div>
 
@@ -115,7 +114,7 @@ const Footer = () => {
             <a href="#sitemap">Sơ Đồ Trang Web</a>
           </div>
           <div className="footer-bottom-right">
-            <p>Thiết kế với ❤️ bởi <strong>Dev Team</strong></p>
+            <p>Thiết kế với ❤️ bởi <strong>CodeGym</strong></p>
           </div>
         </div>
       </div>

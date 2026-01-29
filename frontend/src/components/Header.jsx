@@ -30,10 +30,10 @@ const Header = () => {
           </div>
           <div className="header-nav">
             <ul className="nav-list">
-              <Link to="/"><li className="nav-item">Trang chủ</li></Link>
-              <li className="nav-item">Tour</li>
-              <li className="nav-item">Liên hệ</li>
-              <li className="nav-item">Giới thiệu</li>
+              <Link to="/"><li className="nav-item">Home</li></Link>
+              <Link to="/tours"><li className="nav-item">Tours</li></Link>
+              <Link to="/about"><li className="nav-item">About</li></Link>
+              <Link to="/contact"><li className="nav-item">Contact</li></Link>
             </ul>
           </div>
           <div className="header-btn">

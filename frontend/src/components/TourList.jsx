@@ -236,7 +236,7 @@ const TourList = () => {
 
             {/* Button */}
             <button
-              onClick={() => navigate(`/tour/${tour.id}`)}
+              onClick={() => navigate(`/tours/${tour.id}`)}
               style={{
                 width: '100%',
                 padding: '12px',
