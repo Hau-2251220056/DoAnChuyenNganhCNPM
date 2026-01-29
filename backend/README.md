@@ -109,6 +109,7 @@ npm run seed
 ```
 
 Điều này sẽ:
+
 - ✅ Tạo bảng: `nguoi_dung`, `tour`, `dat_tour`, `thanh_toan`
 - ✅ Tạo 1 admin account: `admin@tourbooking.com` / `Admin@123456`
 - ✅ Tạo 6 tour mẫu (Việt Nam)
@@ -116,11 +117,13 @@ npm run seed
 ### 5. Chạy server
 
 **Mode production:**
+
 ```bash
 npm start
 ```
 
 **Mode development (với auto-reload):**
+
 ```bash
 npm run dev
 ```
@@ -130,6 +133,7 @@ Server sẽ chạy trên: `http://localhost:5000`
 ## 📚 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:5000/api/v1
 ```
@@ -137,9 +141,11 @@ http://localhost:5000/api/v1
 ### 🔐 Authentication
 
 #### POST `/auth/register`
+
 Đăng ký tài khoản mới
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -150,6 +156,7 @@ http://localhost:5000/api/v1
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -165,9 +172,11 @@ http://localhost:5000/api/v1
 ```
 
 #### POST `/auth/login`
+
 Đăng nhập
 
 **Request:**
+
 ```json
 {
   "email": "user@example.com",
@@ -176,6 +185,7 @@ http://localhost:5000/api/v1
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -191,9 +201,11 @@ http://localhost:5000/api/v1
 ```
 
 #### GET `/auth/profile`
+
 Lấy thông tin profile (yêu cầu JWT token)
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
@@ -201,9 +213,11 @@ Authorization: Bearer <token>
 ### 🗽 Tours
 
 #### GET `/tours`
+
 Danh sách tour (có filter)
 
 **Query params:**
+
 - `name` - Tìm theo tên tour
 - `location` - Tìm theo địa điểm
 - `minPrice` - Giá tối thiểu
@@ -211,22 +225,27 @@ Danh sách tour (có filter)
 - `duration` - Thời lượng (ngày)
 
 **Example:**
+
 ```
 GET /api/v1/tours?location=Hà Nội&minPrice=3000000&maxPrice=5000000
 ```
 
 #### GET `/tours/:id`
+
 Chi tiết tour
 
 #### POST `/tours` (Admin only)
+
 Tạo tour mới
 
 **Headers:**
+
 ```
 Authorization: Bearer <admin_token>
 ```
 
 **Request:**
+
 ```json
 {
   "ten_tour": "Tour mới",
@@ -241,22 +260,27 @@ Authorization: Bearer <admin_token>
 ```
 
 #### PUT `/tours/:id` (Admin only)
+
 Cập nhật tour
 
 #### DELETE `/tours/:id` (Admin only)
+
 Xóa tour (soft delete - chỉ set trang_thai = inactive)
 
 ### 📅 Bookings
 
 #### POST `/bookings`
+
 Tạo booking mới (yêu cầu đăng nhập)
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Request:**
+
 ```json
 {
   "tour_id": 1,
@@ -266,6 +290,7 @@ Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -281,47 +306,58 @@ Authorization: Bearer <token>
 ```
 
 #### GET `/bookings`
+
 Danh sách booking của người dùng hiện tại
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 #### GET `/bookings/:id`
+
 Chi tiết booking
 
 #### PUT `/bookings/:id`
+
 Hủy booking
 
 #### GET `/bookings/admin/all` (Admin only)
+
 Danh sách tất cả booking
 
 **Query params:**
+
 - `status` - Lọc theo trạng thái (pending, confirmed, completed, cancelled)
 - `tour_id` - Lọc theo tour
 
 #### PUT `/bookings/admin/:id` (Admin only)
+
 Xác nhận hoặc từ chối booking
 
 **Request:**
+
 ```json
 {
-  "action": "confirm"  // hoặc "reject"
+  "action": "confirm" // hoặc "reject"
 }
 ```
 
 ### 💳 Payments
 
 #### POST `/payments`
+
 Tạo order PayPal
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
 
 **Request:**
+
 ```json
 {
   "booking_id": 1
@@ -329,6 +365,7 @@ Authorization: Bearer <token>
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -342,15 +379,19 @@ Authorization: Bearer <token>
 ```
 
 #### GET `/payments/success?token=<PAYPAL_ORDER_ID>`
+
 Callback thanh toán thành công (gọi từ PayPal)
 
 #### GET `/payments/cancel?token=<PAYPAL_ORDER_ID>`
+
 Callback hủy thanh toán (gọi từ PayPal)
 
 #### GET `/payments/history`
+
 Lịch sử thanh toán của người dùng
 
 **Headers:**
+
 ```
 Authorization: Bearer <token>
 ```
@@ -369,6 +410,7 @@ Authorization: Bearer <token>
 ## 📊 Database Schema
 
 ### Bảng `nguoi_dung`
+
 ```sql
 id (INT, PK, AI)
 ho_ten (VARCHAR)
@@ -382,6 +424,7 @@ created_at, updated_at
 ```
 
 ### Bảng `tour`
+
 ```sql
 id (INT, PK, AI)
 ten_tour (VARCHAR)
@@ -398,6 +441,7 @@ created_at, updated_at
 ```
 
 ### Bảng `dat_tour`
+
 ```sql
 id (INT, PK, AI)
 nguoi_dung_id (INT, FK → nguoi_dung.id)
@@ -410,6 +454,7 @@ created_at, updated_at
 ```
 
 ### Bảng `thanh_toan`
+
 ```sql
 id (INT, PK, AI)
 nguoi_dung_id (INT, FK → nguoi_dung.id)
@@ -433,26 +478,31 @@ Password: Admin@123456
 ## 📝 Troubleshooting
 
 ### Lỗi: Database connection failed
+
 - Kiểm tra MySQL đang chạy
 - Kiểm tra credentials trong `.env`
 - Kiểm tra database tồn tại
 
 ### Lỗi: Token expired
+
 - Cấp token mới bằng cách login lại
 - Hoặc tăng `JWT_EXPIRATION` trong `.env`
 
 ### Lỗi: PayPal payment failed
+
 - Kiểm tra PayPal credentials
 - Chạy ở Sandbox mode trước
 - Kiểm tra return URLs đúng
 
 ### Lỗi: CORS blocked
+
 - Kiểm tra `CORS_ORIGIN` đúng với frontend URL
 - Mặc định: `http://localhost:3000`
 
 ## 📞 Support
 
 Frontend sẽ gọi các API này để:
+
 - ✅ Đăng ký / Đăng nhập
 - ✅ Xem danh sách tour
 - ✅ Tạo booking
