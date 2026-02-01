@@ -54,7 +54,7 @@
   }
 
   .hero-slogan {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 40px;
     opacity: 0.95;
     animation: slideInUp 0.8s ease;
@@ -81,7 +81,7 @@
   }
 
   .hero-description {
-    font-size: 1.1rem;
+    font-size: 2.2rem;
     line-height: 1.6;
     opacity: 0.95;
     animation: fadeIn 1s ease;
@@ -143,7 +143,7 @@
 
     .who-are-we-text {
       p {
-        font-size: 1.05rem;
+        font-size: 1.4rem;
         line-height: 1.8;
         color: #555;
         margin-bottom: 20px;
@@ -154,7 +154,7 @@
           padding: 20px;
           border-radius: 10px;
           font-weight: 600;
-          font-size: 1.1rem;
+          font-size: 1.6rem;
           margin-top: 30px;
         }
       }
@@ -226,7 +226,7 @@
           .bullet {
             color: #667eea;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
             margin-top: 3px;
           }
@@ -235,6 +235,7 @@
             color: #555;
             line-height: 1.6;
             margin: 0;
+            font-size: 1.4rem;
           }
         }
       }
@@ -287,7 +288,7 @@
       }
 
       h4 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         color: #2c3e50;
         margin-bottom: 15px;
         font-weight: 700;
@@ -297,6 +298,7 @@
         color: #666;
         line-height: 1.7;
         margin: 0;
+        font-size: 1.4rem;
       }
     }
   }
@@ -343,7 +345,7 @@
 
     .item-content {
       h4 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
         color: #2c3e50;
         margin-bottom: 10px;
         font-weight: 700;
@@ -353,6 +355,7 @@
         color: #666;
         line-height: 1.7;
         margin: 0;
+        font-size: 1.4rem;
       }
     }
   }
@@ -368,7 +371,7 @@
       text-decoration: none;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.6rem;
       transition: all 0.3s ease;
       box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 
@@ -455,6 +458,7 @@
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -466,6 +470,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -477,6 +482,7 @@
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -487,15 +493,19 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }

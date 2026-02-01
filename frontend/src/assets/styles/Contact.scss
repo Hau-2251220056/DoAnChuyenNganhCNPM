@@ -4,6 +4,7 @@
 .contact-page {
   min-height: 100vh;
   margin-top: 80px;
+
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -50,7 +51,7 @@
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.6rem;
       opacity: 0.95;
     }
   }
@@ -102,6 +103,7 @@
         color: #666;
         line-height: 1.6;
         margin: 0;
+        font-size: 1.6rem;
       }
     }
   }
@@ -427,9 +429,12 @@
 // ===============================================
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }

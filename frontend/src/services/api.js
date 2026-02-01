@@ -69,6 +69,23 @@ export const toursAPI = {
     apiCall(`/tours/${id}`, {
       method: 'GET',
     }),
+
+  create: (tourData) =>
+    apiCall('/tours', {
+      method: 'POST',
+      body: JSON.stringify(tourData),
+    }),
+
+  update: (id, tourData) =>
+    apiCall(`/tours/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(tourData),
+    }),
+
+  delete: (id) =>
+    apiCall(`/tours/${id}`, {
+      method: 'DELETE',
+    }),
 };
 
 // ============== BOOKINGS ENDPOINTS ==============

@@ -79,6 +79,22 @@ const Header = () => {
                         Role: {user.vai_tro === 'admin' ? '👑 Admin' : '👤 Khách hàng'}
                       </p>
                     </div>
+                    {user.vai_tro === 'admin' && (
+                      <Link
+                        to="/admin"
+                        style={{
+                          display: 'block',
+                          padding: '10px',
+                          borderBottom: '1px solid #eee',
+                          textDecoration: 'none',
+                          color: '#007bff',
+                          fontSize: '14px',
+                        }}
+                        onClick={() => setShowDropdown(false)}
+                      >
+                        🏢 Admin Panel
+                      </Link>
+                    )}
                     <button
                       onClick={handleLogout}
                       style={{

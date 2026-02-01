@@ -27,6 +27,7 @@ const authRoutes = require('./routes/auth');
 const tourRoutes = require('./routes/tours');
 const bookingRoutes = require('./routes/bookings');
 const paymentRoutes = require('./routes/payments');
+const uploadRoutes = require('./routes/upload');
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -46,6 +47,9 @@ app.use(cors({
 // Body parser
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
+// Static files
+app.use('/uploads', express.static('uploads'));
 
 // Request logging (development)
 if (process.env.NODE_ENV === 'development') {
@@ -71,6 +75,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/bookings', bookingRoutes);
 app.use('/api/v1/payments', paymentRoutes);
+app.use('/api/v1/upload', uploadRoutes);
 
 // 404 handler
 app.use((req, res) => {
