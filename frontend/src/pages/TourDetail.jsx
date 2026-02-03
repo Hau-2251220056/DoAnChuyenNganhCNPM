@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { toursAPI } from '../services/api';
+import { toursAPI, bookingsAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import '../assets/styles/TourDetail.scss';
 
@@ -13,6 +13,7 @@ const TourDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [soNguoi, setSoNguoi] = useState(1);
+  const [isBooking, setIsBooking] = useState(false);
 
   useEffect(() => {
     fetchTourDetail();
@@ -64,13 +65,38 @@ const TourDetail = () => {
     });
   };
 
-  const handleBookTour = () => {
+  const handleBookTour = async () => {
     if (!isAuthenticated) {
       // Redirect to login with return URL
       navigate('/login', { state: { from: `/tours/${id}` } });
-    } else {
-      // TODO: Navigate to booking page (Sprint sau)
-      alert(`Đặt tour cho ${soNguoi} người - Tính năng booking sẽ được triển khai trong Sprint tiếp theo`);
+      return;
+    }
+
+    try {
+      setIsBooking(true);
+      
+      // Create booking
+      const bookingData = {
+        tour_id: parseInt(id),
+        so_luong_nguoi: soNguoi,
+        ghi_chu: '',
+      };
+
+      console.log('Creating booking:', bookingData);
+      const response = await bookingsAPI.create(bookingData);
+      
+      console.log('Booking created successfully:', response);
+
+      // Navigate to my-bookings
+      navigate('/my-bookings', { 
+        state: { successMessage: `Đã đặt tour cho ${soNguoi} người thành công!` } 
+      });
+
+    } catch (err) {
+      console.error('Error creating booking:', err);
+      alert(`Lỗi: ${err.message || 'Không thể tạo booking'}`);
+    } finally {
+      setIsBooking(false);
     }
   };
 
@@ -326,9 +352,16 @@ const TourDetail = () => {
             <button 
               className={`btn-book ${!isAvailable ? 'disabled' : ''}`}
               onClick={handleBookTour}
-              disabled={!isAvailable}
+              disabled={!isAvailable || isBooking}
             >
-              {isAvailable ? '🎫 Đặt Tour Ngay' : '❌ Hết Chỗ'}
+              {isBooking ? (
+                <>
+                  <span className="spinner"></span>
+                  Đang xử lý...
+                </>
+              ) : (
+                isAvailable ? '🎫 Đặt Tour Ngay' : '❌ Hết Chỗ'
+              )}
             </button>
 
             {!isAuthenticated && isAvailable && (

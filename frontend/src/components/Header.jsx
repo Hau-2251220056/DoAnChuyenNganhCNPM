@@ -38,59 +38,32 @@ const Header = () => {
           </div>
           <div className="header-btn">
             {isAuthenticated && user ? (
-              <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div 
-                  style={{
-                    cursor: 'pointer',
-                    padding: '8px 12px',
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    borderRadius: '4px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '5px',
-                  }}
-                  onMouseEnter={() => setShowDropdown(true)}
-                  onMouseLeave={() => setShowDropdown(false)}
-                >
+              <div
+                className="user-menu"
+                onMouseEnter={() => setShowDropdown(true)}
+                onMouseLeave={() => setShowDropdown(false)}
+              >
+                <button className="user-trigger" type="button">
                   👤 {user.ho_ten || user.email}
-                  <span style={{ fontSize: '12px' }}>▼</span>
-                </div>
-                
+                  <span className="user-caret">▼</span>
+                </button>
+
                 {showDropdown && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '100%',
-                      right: 0,
-                      backgroundColor: 'white',
-                      border: '1px solid #ddd',
-                      borderRadius: '4px',
-                      minWidth: '150px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                      zIndex: 1000,
-                      marginTop: '5px',
-                    }}
-                    onMouseEnter={() => setShowDropdown(true)}
-                    onMouseLeave={() => setShowDropdown(false)}
-                  >
-                    <div style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
-                      <p style={{ margin: 0, fontSize: '12px', color: '#666' }}>
-                        Role: {user.vai_tro === 'admin' ? '👑 Admin' : '👤 Khách hàng'}
-                      </p>
+                  <div className="user-dropdown" role="menu">
+                    <div className="user-dropdown-role">
+                      Role: {user.vai_tro === 'admin' ? '👑 Admin' : '👤 Khách hàng'}
                     </div>
+                    <Link
+                      to="/my-bookings"
+                      className="user-dropdown-item"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      📋 Booking Của Tôi
+                    </Link>
                     <button
+                      type="button"
+                      className="user-dropdown-item is-logout"
                       onClick={handleLogout}
-                      style={{
-                        width: '100%',
-                        padding: '10px',
-                        border: 'none',
-                        backgroundColor: 'transparent',
-                        cursor: 'pointer',
-                        color: '#d32f2f',
-                        textAlign: 'left',
-                        fontSize: '14px',
-                      }}
                     >
                       🚪 Đăng xuất
                     </button>

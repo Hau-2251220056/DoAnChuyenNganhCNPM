@@ -12,6 +12,7 @@ const router = express.Router();
 // Customer routes
 router.post('/', authMiddleware, bookingController.createBooking);
 router.get('/', authMiddleware, bookingController.getMyBookings);
+router.post('/:id/confirm-payment', authMiddleware, bookingController.confirmPaymentBooking);
 router.get('/:id', authMiddleware, bookingController.getBookingById);
 router.put('/:id', authMiddleware, bookingController.cancelBooking);
 

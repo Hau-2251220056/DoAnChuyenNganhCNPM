@@ -1,0 +1,724 @@
+// ========================================
+// PAYMENT PAGE - MODERN LAYOUT
+// ========================================
+
+
+
+// ========================================
+// PAGE CONTAINER
+// ========================================
+
+.payment-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  padding: 50px 0 80px;
+  margin-top: var(--header-height, 80px);
+
+  @media (max-width: 768px) {
+    padding: 30px 0 60px;
+  }
+}
+
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+}
+
+// ========================================
+// LOADING STATE
+// ========================================
+
+.payment-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 25px;
+
+  .loading-spinner {
+    width: 70px;
+    height: 70px;
+    border: 6px solid #e0e0e0;
+    border-top: 6px solid var(--primary-gradient);
+    border-right: 6px solid var(--primary-gradient);
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+  }
+
+  p {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ========================================
+// ERROR ALERT
+// ========================================
+
+.payment-error-alert {
+  background: linear-gradient(135deg, #ffe5e5 0%, #ffd9d9 100%);
+  border-left: 5px solid #e74c3c;
+  border-radius: 10px;
+  color: #721c24;
+  padding: 22px 25px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.15);
+
+  span {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .retry-btn {
+    padding: 10px 28px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+
+    .retry-btn {
+      width: 100%;
+    }
+  }
+}
+
+// ========================================
+// PAGE HEADER
+// ========================================
+
+.payment-header {
+  margin-bottom: 45px;
+  text-align: center;
+  animation: slideDown 0.6s ease-out;
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin: 0;
+  }
+}
+
+// ========================================
+// MAIN LAYOUT - 2 COLUMNS
+// ========================================
+
+.payment-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 35px;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+// ========================================
+// MAIN CONTENT AREA
+// ========================================
+
+.payment-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+// ========================================
+// INFO SECTION
+// ========================================
+
+.payment-section {
+  background: white;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(240, 242, 245, 0.8);
+
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: 800;
+    margin: 0 0 28px 0;
+    padding-bottom: 18px;
+    border-bottom: 3px solid #f0f2f5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::before {
+      content: '';
+      width: 5px;
+      height: 28px;
+      background: var(--primary-gradient);
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+}
+
+// ========================================
+// INFO CARD
+// ========================================
+
+.info-card {
+  background: linear-gradient(135deg, #fafbfc 0%, #f5f7fa 100%);
+  border-radius: 14px;
+  padding: 22px;
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12);
+  }
+
+  .info-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .info-value {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    font-weight: 800;
+    line-height: 1.2;
+
+    &.tour-name {
+      color: #667eea;
+      font-size: 1.5rem;
+    }
+
+    &.price {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.8rem;
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin-top: 12px;
+      object-fit: cover;
+    }
+  }
+}
+
+// ========================================
+// INFO ROW
+// ========================================
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f2f5;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  .info-label {
+    font-weight: 700;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .info-value {
+    font-weight: 800;
+    color: #2c3e50;
+    text-align: right;
+    font-size: 1.1rem;
+
+    &.price {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// ========================================
+// SIDEBAR
+// ========================================
+
+.payment-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @media (max-width: 1024px) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+// ========================================
+// SIDEBAR CARD
+// ========================================
+
+.sidebar-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(240, 242, 245, 0.8);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 22px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 800;
+    margin: 0 0 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--primary-gradient);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// ========================================
+// PAYMENT METHOD SECTION
+// ========================================
+
+.payment-method-section {
+  .method-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .method-option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border: 2.5px solid #e0e0e0;
+    border-radius: 12px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #667eea;
+      background: #f5f7fa;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+    }
+
+    input[type="radio"] {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      accent-color: #667eea;
+      flex-shrink: 0;
+    }
+
+    .method-content {
+      flex: 1;
+
+      .method-title {
+        font-weight: 800;
+        color: #2c3e50;
+        font-size: 1rem;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .method-desc {
+        font-size: 0.85rem;
+        color: #7f8c8d;
+      }
+    }
+
+    .method-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    &.selected {
+      border-color: #667eea;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+    }
+  }
+}
+
+// ========================================
+// AMOUNT SECTION
+// ========================================
+
+.amount-section {
+  .amount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-top: 18px;
+      border-top: 2px solid #f0f2f5;
+      margin-top: 18px;
+    }
+
+    .label {
+      color: #7f8c8d;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .value {
+      color: #2c3e50;
+      font-weight: 800;
+      font-size: 1.1rem;
+
+      &.total {
+        font-size: 1.4rem;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .amount-highlight {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+    border-left: 5px solid #667eea;
+    padding: 22px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+    }
+
+    .highlight-label {
+      font-size: 0.8rem;
+      color: #7f8c8d;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .highlight-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+// ========================================
+// ACTION BUTTONS
+// ========================================
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  button {
+    padding: 15px 22px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(2px);
+    }
+  }
+
+  .btn-confirm {
+    background: var(--success-gradient);
+    color: white;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+    }
+  }
+
+  .btn-cancel {
+    background: #f5f7fa;
+    color: #e74c3c;
+    border: 2.5px solid #e74c3c;
+
+    &:hover:not(:disabled) {
+      background: #ffe5e5;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.2);
+    }
+  }
+
+  .text-muted {
+    padding: 12px;
+    background: #f5f7fa;
+    color: #7f8c8d;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+}
+
+// ========================================
+// INFO MESSAGE
+// ========================================
+
+.info-message {
+  background: linear-gradient(135deg, rgba(66, 165, 245, 0.08) 0%, rgba(25, 118, 210, 0.08) 100%);
+  border-left: 5px solid #2196f3;
+  padding: 16px 20px;
+  border-radius: 10px;
+  color: #01579b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.6;
+
+  &.warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 152, 0, 0.08) 100%);
+    border-left-color: #ff9800;
+    color: #e65100;
+  }
+
+  &.success {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(56, 142, 60, 0.08) 100%);
+    border-left-color: #4caf50;
+    color: #1b5e20;
+  }
+}
+
+// ========================================
+// RESPONSIVE ADJUSTMENTS
+// ========================================
+
+@media (max-width: 768px) {
+  .payment-layout {
+    gap: 25px;
+  }
+
+  .payment-section {
+    padding: 22px;
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+    }
+
+    .section-grid {
+      gap: 18px;
+    }
+  }
+
+  .sidebar-card {
+    padding: 22px;
+  }
+
+  .info-card {
+    padding: 18px;
+  }
+
+  .payment-method-section {
+    .method-option {
+      padding: 15px 18px;
+      gap: 12px;
+
+      input[type="radio"] {
+        width: 20px;
+        height: 20px;
+      }
+
+      .method-icon {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .action-buttons {
+    button {
+      padding: 13px 18px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .payment-page {
+    padding: 25px 0 50px;
+  }
+
+  .payment-header {
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .payment-method-section {
+    .method-option {
+      padding: 14px 16px;
+
+      .method-content {
+        .method-title {
+          font-size: 0.95rem;
+        }
+
+        .method-desc {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

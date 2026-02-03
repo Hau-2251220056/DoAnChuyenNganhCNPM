@@ -3,7 +3,7 @@
 
 .contact-page {
   min-height: 100vh;
-  margin-top: 80px;
+  margin-top: var(--header-height);
   .container {
     max-width: 1200px;
     margin: 0 auto;

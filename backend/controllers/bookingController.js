@@ -310,3 +310,53 @@ exports.updateBookingStatus = async (req, res, next) => {
     next(error);
   }
 };
+/**
+ * POST /bookings/:id/confirm-payment
+ * Xác nhận thanh toán và cập nhật booking status (after payment success)
+ */
+exports.confirmPaymentBooking = async (req, res, next) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { id } = req.params;
+    const nguoi_dung_id = req.user.id;
+
+    const booking = await Booking.findOne({
+      where: { id, nguoi_dung_id },
+      lock: true,
+      transaction,
+    });
+
+    if (!booking) {
+      await transaction.rollback();
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found',
+      });
+    }
+
+    // Chỉ có thể confirm nếu ở trạng thái pending hoặc pending_payment
+    if (!['pending', 'pending_payment'].includes(booking.trang_thai)) {
+      await transaction.rollback();
+      return res.status(400).json({
+        success: false,
+        message: `Cannot confirm payment for booking with status: ${booking.trang_thai}`,
+      });
+    }
+
+    // Cập nhật trạng thái thành confirmed
+    booking.trang_thai = 'confirmed';
+    await booking.save({ transaction });
+
+    await transaction.commit();
+
+    res.status(200).json({
+      success: true,
+      message: 'Payment confirmed successfully',
+      data: booking,
+    });
+  } catch (error) {
+    await transaction.rollback();
+    next(error);
+  }
+};

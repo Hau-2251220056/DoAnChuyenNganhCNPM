@@ -78,10 +78,33 @@ export const bookingsAPI = {
       method: 'GET',
     }),
 
+  getById: (id) =>
+    apiCall(`/bookings/${id}`, {
+      method: 'GET',
+    }),
+
   create: (bookingData) =>
     apiCall('/bookings', {
       method: 'POST',
       body: JSON.stringify(bookingData),
+    }),
+
+  cancel: (id) =>
+    apiCall(`/bookings/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ trang_thai: 'cancelled' }),
+    }),
+
+  update: (id, data) =>
+    apiCall(`/bookings/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+
+  confirmPayment: (id) =>
+    apiCall(`/bookings/${id}/confirm-payment`, {
+      method: 'POST',
+      body: JSON.stringify({}),
     }),
 };
 

@@ -14,6 +14,7 @@ html {
 }
 
 :root {
+    --header-height: 80px;
     --primary-color: #1976d2;
     --secondary-color: #ff9800;
     --font-color: #333;
@@ -23,6 +24,10 @@ html {
     --white-color: #fff;
     --black-color: #000;
     --btn-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    --success-gradient: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+    --warning-gradient: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
 }
 
 .max-width{
